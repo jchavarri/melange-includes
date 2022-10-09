@@ -1,7 +1,7 @@
 (include_subdirs unqualified)
 
 (library
- (name melange_stdlib)
+ (name melange_includes)
  (modes melange)
- (libraries melange_others)
+ (modules_without_implementation bs_stdlib_mini)
  (wrapped false))

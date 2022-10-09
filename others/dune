@@ -1,5 +1,0 @@
-(library
- (name melange_others)
- (modes melange)
- (libraries melange_runtime)
- (wrapped false))
