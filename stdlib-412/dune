@@ -1,0 +1,6 @@
+(include_subdirs unqualified)
+
+(library
+ (name melange_stdlib)
+ (modes melange)
+ (wrapped false))
