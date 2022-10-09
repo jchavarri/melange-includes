@@ -1,4 +1,5 @@
 (library
  (name melange_runtime)
  (modes melange)
+ (modules_without_implementation bs_stdlib_mini)
  (wrapped false))
