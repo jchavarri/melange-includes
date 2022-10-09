@@ -690,7 +690,7 @@ module Array : sig
   external unsafe_set : t -> int -> float -> unit = "%floatarray_unsafe_set"
 
 end
-(** Float arrays with packed representation. *)
+(* (** Float arrays with packed representation. *)
 
 #if BS then
 #else
@@ -915,4 +915,4 @@ module ArrayLabels : sig
 
 end
 (** Float arrays with packed representation (labeled functions). *)
-#end
+#end *)

@@ -5,10 +5,10 @@ module Arg          = Arg
 module Array        = Array
 module ArrayLabels  = ArrayLabels
 module Atomic       = Atomic
-#if BS then
+(* #if BS then
 #else
 module Bigarray     = Bigarray
-#end
+#end *)
 module Bool         = Bool
 module Buffer       = Buffer
 module Bytes        = Bytes
@@ -18,10 +18,10 @@ module Char         = Char
 module Complex      = Complex
 module Digest       = Digest
 module Either       = Either
-#if BS then
+(* #if BS then
 #else
 module Ephemeron    = Ephemeron
-#end
+#end *)
 module Filename     = Filename
 module Float        = Float
 module Format       = Format
@@ -40,10 +40,10 @@ module ListLabels   = ListLabels
 module Map          = Map
 module Marshal      = Marshal
 module MoreLabels   = MoreLabels
-#if BS then
+(* #if BS then
 #else
 module Nativeint    = Nativeint
-#end
+#end *)
 module Obj          = Obj
 module Oo           = Oo
 module Option       = Option

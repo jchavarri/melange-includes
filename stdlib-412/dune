@@ -3,4 +3,5 @@
 (library
  (name melange_stdlib)
  (modes melange)
+ (libraries melange_others)
  (wrapped false))

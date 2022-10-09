@@ -180,10 +180,10 @@ external compare : 'a -> 'a -> int = "%compare"
    required by the {!Set.Make} and {!Map.Make} functors, as well as
    the {!List.sort} and {!Array.sort} functions. *)
 
-#if BS then
+(* #if BS then *)
 external min : 'a -> 'a -> 'a = "%bs_min"
 external max : 'a -> 'a -> 'a = "%bs_max"
-#else
+(* #else
 val min : 'a -> 'a -> 'a
 (** Return the smaller of the two arguments.
     The result is unspecified if one of the arguments contains
@@ -193,7 +193,7 @@ val max : 'a -> 'a -> 'a
 (** Return the greater of the two arguments.
     The result is unspecified if one of the arguments contains
     the float value [nan]. *)
-#end
+#end *)
 
 external ( == ) : 'a -> 'a -> bool = "%eq"
 (** [e1 == e2] tests for physical equality of [e1] and [e2].
@@ -486,7 +486,7 @@ external ( /. ) : float -> float -> float = "%divfloat"
     Left-associative operator, see {!Ocaml_operators} for more information.
 *)
 
-#if BS then
+(* #if BS then *)
 external ( ** ) : float -> float -> float =  "pow" [@@bs.val] [@@bs.scope "Math"]
 (** Exponentiation. *)
 
@@ -591,7 +591,7 @@ external floor : float -> float =  "floor" [@@bs.val] [@@bs.scope "Math"]
 
 external abs_float : float -> float = "abs" [@@bs.val] [@@bs.scope "Math"]
 (** [abs_float f] returns the absolute value of [f]. *)
-#else
+(* #else
 
 external ( ** ) : float -> float -> float = "caml_power_float" "pow"
   [@@unboxed] [@@noalloc]
@@ -693,7 +693,7 @@ external floor : float -> float = "caml_floor_float" "floor"
 
 external abs_float : float -> float = "%absfloat"
 (** [abs_float f] returns the absolute value of [f]. *)
-#end
+#end *)
 
 external copysign : float -> float -> float
                   = "caml_copysign_float" "caml_copysign"
@@ -746,10 +746,10 @@ val infinity : float
 val neg_infinity : float
 (** Negative infinity. *)
 
-#if BS then
+(* #if BS then *)
 external nan : float = "NaN" [@@bs.val]  [@@bs.scope "Number"]
 (* we could also use [0.  /. 0.] *)
-#else
+(* #else
 val nan : float
 (** A special floating-point value denoting the result of an
    undefined operation such as [0.0 /. 0.0].  Stands for
@@ -757,7 +757,7 @@ val nan : float
    argument returns [nan] as result.  As for floating-point comparisons,
    [=], [<], [<=], [>] and [>=] return [false] and [<>] returns [true]
    if one or both of their arguments is [nan]. *)
-#end
+#end *)
 
 val max_float : float
 (** The largest positive finite value of type [float]. *)
@@ -778,14 +778,14 @@ type fpclass =
 (** The five classes of floating-point numbers, as determined by
    the {!Stdlib.classify_float} function. *)
 
-#if BS then
+(* #if BS then *)
 val classify_float : float -> fpclass
-#else
+(* #else
 external classify_float : (float [@unboxed]) -> fpclass =
   "caml_classify_float" "caml_classify_float_unboxed" [@@noalloc]
 (** Return the class of the given floating-point number:
    normal, subnormal, zero, infinite, or not a number. *)
-#end
+#end *)
 
 
 (** {1 String operations}
@@ -793,11 +793,11 @@ external classify_float : (float [@unboxed]) -> fpclass =
    More string operations are provided in module {!String}.
 *)
 
-#if BS then
+(* #if BS then *)
 external (^) : string -> string -> string = "#string_append"
-#else
+(* #else
 val ( ^ ) : string -> string -> string
-#end
+#end *)
 (** String concatenation.
     Right-associative operator, see {!Ocaml_operators} for more information.
 
@@ -848,11 +848,11 @@ val bool_of_string : string -> bool
 (** Same as {!Stdlib.bool_of_string_opt}, but raise
    [Invalid_argument "bool_of_string"] instead of returning [None]. *)
 
-#if BS then
+(* #if BS then *)
 external string_of_int : int -> string = "String" [@@bs.val]
-#else
+(* #else
 val string_of_int : int -> string
-#end
+#end *)
 (** Return the string representation of an integer, in decimal. *)
 
 val int_of_string_opt: string -> int option
@@ -968,12 +968,12 @@ val print_int : int -> unit
 val print_float : float -> unit
 (** Print a floating-point number, in decimal, on standard output. *)
 
-#if BS then
+(* #if BS then *)
 external print_endline : string -> unit = "log"
 [@@bs.val] [@@bs.scope "console"]
-#else
+(* #else
 val print_endline : string -> unit
-#end
+#end *)
 (** Print a string, followed by a newline character, on
    standard output and flush standard output. *)
 
@@ -1001,12 +1001,12 @@ val prerr_int : int -> unit
 val prerr_float : float -> unit
 (** Print a floating-point number, in decimal, on standard error. *)
 
-#if BS then
+(* #if BS then *)
 external prerr_endline : string -> unit = "error"
 [@@bs.val] [@@bs.scope "console"]
-#else
+(* #else
 val prerr_endline : string -> unit
-#end
+#end *)
 (** Print a string, followed by a newline character on standard
    error and flush standard error. *)
 
